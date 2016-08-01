@@ -11,7 +11,7 @@ import React, {PropTypes} from 'react';
 
 class ${1:Class1} extends React.Component {
   render () {
-
+    <div>$2</div>
   }
 }
 
@@ -22,7 +22,6 @@ ${1}.propTypes = {
 export default $1;
     """
 
-'.source.js':
   'React Container Component':
     'prefix': 'react-smart'
     'body': """
@@ -35,12 +34,12 @@ class ${1:NewPage} extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
-}
 
-render() {
-  return (
-    $3
-  );
+  render() {
+    return (
+      <div>$3</div>
+    );
+  }
 }
 
 ${1}.propTypes = {
@@ -61,16 +60,15 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)($1);
     """
-
-'.source.js':
+    
   'React Stateless Component':
     'prefix': 'react-stateless'
     'body': """
 import React, {PropTypes} from 'react';
 
-const ${1:StatelessComponent} extend React.Component {
+const ${1:StatelessComponent} = (props) => {
   return (
-    $2
+    <div>$2</div>
   );
 }
 
