@@ -5,13 +5,15 @@
 	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
 	 // Example:
 */
-	 "React Class Component": {
+	"React Class Component": {
 		"prefix": "react-class",
 		"body": [
 			"import React, {PropTypes} from 'react';\n",
 			"class ${1:Class1} extends React.Component {",
 			"\trender () {",
-			"\t\t${2}\n\t}",
+			"\t\treturn (",
+			"\t\t\t<div>$2</div>",
+			"\t\t);\n\t}",
 			"}\n",
 			"${1}.propTypes = {",
 			"	// myProps: PropTypes.string.isRequired",
