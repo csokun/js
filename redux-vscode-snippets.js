@@ -28,7 +28,7 @@
 			"import React, {PropTypes} from 'react';",
 			"import {connect} from 'react-redux';",
 			"import {bindActionCreators} from 'redux';",
-			"import * as ${2:actionHandler} from '../actions/${2}';\n",
+			"import * as ${2:actionHandler} from '../../actions/${2}';\n",
 
 			"class ${1:NewPage} extends React.Component {",
 			"\tconstructor(props, context) {",
@@ -43,7 +43,7 @@
 			"}\n",
 
 			"${1}.propTypes = {",
-			"\t// myProps = React.PropTypes.string.isRequired",
+			"\t// myProps: PropTypes.string.isRequired",
 			"};\n",
 
 			"function mapStateToProps(state) {",
@@ -74,7 +74,7 @@
 			"};\n",
 
 			"${1}.PropTypes = {",
-			"\t// myProp: ProptTypes.string.isRequired",
+			"\t// myProp: PropTypes.string.isRequired",
 			"};\n",
 
 			"export default $1;"
