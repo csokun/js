@@ -15,6 +15,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'vim-airline/vim-airline.git'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'edkolev/tmuxline.vim.git'
 
 " colorschemes
 Plugin 'nanotech/jellybeans.vim.git'
