@@ -14,6 +14,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'vim-airline/vim-airline.git'
+Plugin 'vim-syntastic/syntastic'
 
 " colorschemes
 Plugin 'nanotech/jellybeans.vim.git'
@@ -67,5 +68,8 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden	= 1
 let NERDTreeIgnore			= ['.git$[[dir]]', '.swp', 'node_modules', '\.png$', '\.jpg$']
 
+" syntastic
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'		" requires eslint install locally
 " airline
 let g:airline_powerline_fonts = 1
