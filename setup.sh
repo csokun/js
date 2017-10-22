@@ -1,75 +1,40 @@
-set nocompatible	" be iMproved, required
-filetype off		" required
+#!/bin/bash
+# Pre-requisites:
+# ----------------------------------------------
+# setup development environment (Ubuntu)
+sudo su -
+apt install -y git tmux vim
+exit
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+# install powerline fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+# terminal theme
+wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh
 
-" load more plugins
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'ctrlpvim/ctrlp.vim.git'
-Plugin 'vim-airline/vim-airline.git'
-Plugin 'vim-syntastic/syntastic'
+# tmux config
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+wget https://raw.githubusercontent.com/csokun/js/master/.tmux.conf
+ 
+# vim config
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+wget https://raw.githubusercontent.com/csokun/js/master/.vimrc
 
-" colorschemes
-Plugin 'nanotech/jellybeans.vim.git'
+# install nvm - Node Version Manager 
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+source ~/.bashrc
+# docker
+wget https://download.docker.com/linux/ubuntu/dists/zesty/pool/stable/amd64/docker-ce_17.09.0~ce-0~ubuntu_amd64.deb
+sudo su -
+dpkg -i docker-ce_17.09.0~ce-0~ubuntu_amd64.deb
+usermod -aG docker $USER		# run docker without sudo
+systemctl enable docker			# start docker on boot
+exit
 
-" All plugin must be added before the following commands
-call vundle#end()		" required
-filetype plugin indent on	" required
-
-" VIM config
-set number
-set numberwidth=5
-
-set backspace=2			" Backspace deletes like most programs in insert mode
-set tabstop=2				" Show existing tab with 2 spaces width
-set shiftwidth=2		" When indenting with '>', use 2 spaces width
-"set expandtab			" On pressing tab insert 2 spaces
-
-set ruler
-set showcmd
-set incsearch
-set laststatus=2		" Always display the status line
-set autowrite				" Automatically :write before running commands
-
-colorscheme jellybeans
-
-" Make it obvious where 80 characters is
-"set textwidth=80
-"set colorcolumn=1
-
-" Save File with Leader + s
-nnoremap <leader>s :w<cr>
-inoremap <leader>s <C-c>:w<cr>
-
-" Quick window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" CtrlP - https://github.com/ctrlpvim/ctrlp.vim
-let g:ctrlp_root_markers = ['package.json']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-" NERDTree
-map <C-n> :NERDTreeToggle<CR> " Ctrl + n
-" open a NERDTree automatically when vim starts up if no file were speicified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" close vim if the onl window left option is a NERDTree
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeShowHidden	= 1
-let NERDTreeIgnore			= ['.git$[[dir]]', '.swp', 'node_modules', '\.png$', '\.jpg$']
-
-" syntastic
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'		" requires eslint install locally
-" airline
-let g:airline_powerline_fonts = 1
+# terminal theme
+wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh
