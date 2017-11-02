@@ -42,6 +42,9 @@ set noswapfile
 
 colorscheme jellybeans
 
+" Remove annoying SHIFT + O delay time
+:set timeout timeoutlen=3000 ttimeoutlen=100
+
 " Make it obvious where 80 characters is
 "set textwidth=80
 "set colorcolumn=1
