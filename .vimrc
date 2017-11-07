@@ -15,6 +15,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'vim-airline/vim-airline.git'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'edkolev/tmuxline.vim.git'
 
 " colorschemes
@@ -41,9 +42,8 @@ set autowrite				" Automatically :write before running commands
 set noswapfile
 
 colorscheme jellybeans
-
-" Remove annoying SHIFT + O delay time
-:set timeout timeoutlen=3000 ttimeoutlen=100
+" Fixing annoying Shift + O delay
+set timeout timeoutlen=3000 timeoutlen=100
 
 " Make it obvious where 80 characters is
 "set textwidth=80
@@ -76,5 +76,25 @@ let NERDTreeIgnore			= ['.git$[[dir]]', '.swp', 'node_modules', '\.png$', '\.jpg
 " syntastic
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'		" requires eslint install locally
+
+" EasyMotion
+let g:EasyMotion_do_mapping = 0	" Disable default mappings
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" Buffergator
+nmap <C-b> :BuffergatorToggle<CR>
+let g:buffergator_autoexpand_on_split = 0
+let g:buffergator_suppress_keymaps = 1
+
 " airline
 let g:airline_powerline_fonts = 1
