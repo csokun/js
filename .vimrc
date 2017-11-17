@@ -17,6 +17,7 @@ Plugin 'vim-airline/vim-airline.git'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'edkolev/tmuxline.vim.git'
+Plugin 'tomlion/vim-solidity'
 
 " colorschemes
 Plugin 'nanotech/jellybeans.vim.git'
